@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stephen Nash Aguilar | Portfolio Finals (CC1)</title>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -20,7 +24,6 @@
       position: relative;
     }
 
-    /* ===== Animated Background ===== */
     body::before {
       content: "";
       position: fixed;
@@ -51,6 +54,12 @@
       align-items: center;
       padding: 15px 60px;
       z-index: 1000;
+      animation: fadeDown 1s ease;
+    }
+
+    @keyframes fadeDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .logo {
@@ -78,7 +87,7 @@
       color: #64ffda;
     }
 
-    /* ===== Hero Section ===== */
+    /* ===== Hero ===== */
     .hero {
       height: 100vh;
       display: flex;
@@ -87,6 +96,7 @@
       align-items: center;
       text-align: center;
       padding: 0 20px;
+      animation: fadeUp 1.5s ease;
     }
 
     .hero img {
@@ -96,6 +106,13 @@
       border: 4px solid #64ffda;
       box-shadow: 0px 8px 30px rgba(100, 255, 218, 0.3);
       margin-bottom: 25px;
+      object-fit: cover;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     .hero h1 {
@@ -131,7 +148,7 @@
       transform: scale(1.05);
     }
 
-    /* ===== Section Style ===== */
+    /* ===== Section Base ===== */
     .section {
       padding: 80px 10%;
       text-align: center;
@@ -139,6 +156,19 @@
       opacity: 0;
       transform: translateY(50px);
       transition: all 1s ease-out;
+      position: relative;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(100,255,218,0.2), rgba(100,255,218,0.8), rgba(100,255,218,0.2));
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(100,255,218,0.3);
     }
 
     .section.show {
@@ -162,9 +192,10 @@
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
+      border-radius: 10px;
     }
 
-    /* ===== About Me ===== */
+    /* ===== About ===== */
     .about-text {
       max-width: 900px;
       margin: 0 auto;
@@ -172,6 +203,12 @@
       line-height: 1.8;
       font-size: 1.05rem;
       color: #ccd6f6;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      padding: 40px;
+      border: 1px solid rgba(100, 255, 218, 0.3);
+      box-shadow: 0 0 15px rgba(100, 255, 218, 0.1);
+      animation: fadeUp 1.2s ease;
     }
 
     .about-text p {
@@ -194,6 +231,18 @@
       width: 300px;
       color: #e6f1ff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .edu-card i {
+      font-size: 2rem;
+      color: #64ffda;
+      margin-bottom: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .edu-card:hover i {
+      transform: rotate(10deg) scale(1.2);
     }
 
     .edu-card:hover {
@@ -222,6 +271,17 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .card i {
+      font-size: 2rem;
+      color: #64ffda;
+      margin-bottom: 10px;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover i {
+      transform: scale(1.3);
+    }
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 20px rgba(100, 255, 218, 0.3);
@@ -240,12 +300,17 @@
       font-size: 0.9rem;
       color: #ccd6f6;
       margin-top: 60px;
-      border-top: 1px solid rgba(100, 255, 218, 0.3);
+      border-top: 2px solid rgba(100, 255, 218, 0.3);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body>
 
+<body>
   <nav class="navbar">
     <div class="logo">My Portfolio</div>
     <ul class="nav-links">
@@ -260,7 +325,7 @@
   <section class="hero" id="home">
     <img src="profile.jpg" alt="Formal Picture">
     <h1>Hello, I'm <span>Stephen Nash Aguilar</span></h1>
-    <p>A Bachelor of Science in Information Technology student at the University of the Cordilleras, passionate about web development, computer networking, and system troubleshooting. Driven by purpose, guided by growth.</p>
+    <p>A Bachelor of Science in Information Technology student passionate about web development, networking, and system troubleshooting.</p>
     <a href="#about" class="btn">Read My Story</a>
   </section>
 
@@ -269,13 +334,13 @@
     <h2>About Me</h2>
     <div class="about-text">
       <p>My story begins on the day I was born — a small child with big dreams, growing up in a simple yet warm environment where my family taught me the values of patience, humility, and perseverance. I wasn’t born into luxury, but I was surrounded by love and support that shaped me into who I am today. As a child, I was curious about everything — always asking questions, touching gadgets, and wondering how things worked.</p>
-
+      
       <p>I remember the first time I sat in front of a computer. The glowing screen, the sound of the keyboard, and the world that appeared through the monitor amazed me. From that moment, I knew that technology was something I wanted to understand. I spent hours exploring, learning, and experimenting, not realizing that I was slowly building the foundation of what would become my passion.</p>
-
+      
       <p>Growing up, I wasn’t the smartest in class, but I was determined. Every challenge I faced became a lesson — every failure, a motivation to rise stronger. There were times I doubted myself, times I felt lost, but I always found strength in remembering why I started. My curiosity for computers became my direction, and my dream started to take shape — to become a web developer who builds something that people can use, enjoy, and learn from.</p>
-
+      
       <p>Now, as a Web Technology student, I continue to discover the beauty of coding and design. Learning how websites are made, how systems work, and how technology connects people makes me excited for what’s ahead. It’s not just about codes and screens for me — it’s about creating something meaningful, something that reflects who I am and what I stand for.</p>
-
+      
       <p>Looking back, I’m proud of how far I’ve come. From a curious child fascinated by gadgets to a young adult determined to make a mark in the digital world — my journey is still unfolding. And as I continue to learn and grow, I hold on to one belief: that with passion, dedication, and faith, I can turn my dreams into reality, one line of code at a time.</p>
     </div>
   </section>
@@ -285,16 +350,19 @@
     <h2>Educational Background</h2>
     <div class="edu-container">
       <div class="edu-card">
+        <i class="fa-solid fa-school"></i>
         <h3>Elementary</h3>
-        <p>Magsaysay Elementary School — where my academic journey began and my curiosity for learning was nurtured.</p>
+        <p>Magsaysay Elementary School — where my curiosity for learning began.</p>
       </div>
       <div class="edu-card">
-        <h3>Junior and Senior High School</h3>
-        <p>Pangasinan National High School — where I developed discipline, teamwork, and leadership skills that shaped my growth.</p>
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h3>Junior & Senior High School</h3>
+        <p>Pangasinan National High School — where I built my discipline and confidence.</p>
       </div>
       <div class="edu-card">
+        <i class="fa-solid fa-laptop-code"></i>
         <h3>College</h3>
-        <p>University of the Cordilleras (Present) — pursuing Bachelor of Science in Information Technology, major in Web Technology.</p>
+        <p>University of the Cordilleras — pursuing BS in Information Technology, major in Web Technology.</p>
       </div>
     </div>
   </section>
@@ -303,12 +371,12 @@
   <section class="section" id="achievements">
     <h2>Achievements</h2>
     <div class="achievements-grid">
-      <div class="card"><h3>Diligent Medal</h3><p>For consistency and dedication in academic performance.</p></div>
-      <div class="card"><h3>Best in Work Immersion</h3><p>Recognized for exceptional performance and professionalism.</p></div>
-      <div class="card"><h3>Senate Medal</h3><p>For outstanding excellence and leadership in education.</p></div>
-      <div class="card"><h3>With High Honors</h3><p>Awarded for academic excellence and perseverance.</p></div>
-      <div class="card"><h3>NC II in Computer System Servicing</h3><p>Certified in computer repair, maintenance, and troubleshooting.</p></div>
-      <div class="card"><h3>First Placer in Singing Contest</h3><p>Awarded at Pangasinan National High School for outstanding vocal performance.</p></div>
+      <div class="card"><i class="fa-solid fa-medal"></i><h3>Diligent Medal</h3><p>Recognized for consistent hard work and perseverance.</p></div>
+      <div class="card"><i class="fa-solid fa-briefcase"></i><h3>Best in Work Immersion</h3><p>For professionalism and outstanding performance during immersion.</p></div>
+      <div class="card"><i class="fa-solid fa-trophy"></i><h3>Senate Medal</h3><p>For leadership and excellence in education.</p></div>
+      <div class="card"><i class="fa-solid fa-award"></i><h3>With High Honors</h3><p>For academic excellence and perseverance.</p></div>
+      <div class="card"><i class="fa-solid fa-computer"></i><h3>NC II – Computer System Servicing</h3><p>Certified in computer maintenance and troubleshooting.</p></div>
+      <div class="card"><i class="fa-solid fa-music"></i><h3>First Placer – Singing Contest</h3><p>Awarded at Pangasinan National High School for vocal excellence.</p></div>
     </div>
   </section>
 
@@ -317,7 +385,6 @@
   </footer>
 
   <script>
-    // Fade-in Animation on Scroll
     const sections = document.querySelectorAll('.section');
     const reveal = () => {
       const trigger = window.innerHeight * 0.8;
