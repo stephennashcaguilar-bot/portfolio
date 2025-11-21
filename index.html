@@ -9,7 +9,7 @@
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-body { background: linear-gradient(135deg, #0a192f, #0f2742); color:#f1f5f9; overflow:hidden; height:100vh; }
+body { background: linear-gradient(135deg, #0a192f, #0f2742); color:#f1f5f9; height:100vh; overflow:hidden; }
 
 /* Navbar */
 .navbar {
@@ -23,10 +23,13 @@ body { background: linear-gradient(135deg, #0a192f, #0f2742); color:#f1f5f9; ove
 .nav-links a:hover, .nav-links a.active { color:#64ffda; cursor:pointer; }
 
 /* Pages */
-.page { display:none; width:100%; height:calc(100vh - 70px); padding:30px 10%; flex-direction:column; justify-content:center; opacity:0; transition: opacity 0.8s ease; overflow:hidden; }
+.page {
+  display:none; width:100%; height:calc(100vh - 70px); padding:30px 5%; flex-direction:column;
+  justify-content:center; opacity:0; transition: opacity 0.8s ease;
+}
 .page.show { display:flex; opacity:1; }
 
-/* Page 1: Profile + About Me */
+/* Page 1: About Me */
 .first-page-content {
   display:flex; align-items:center; justify-content:center; gap:50px; width:100%; height:100%;
 }
@@ -35,55 +38,73 @@ body { background: linear-gradient(135deg, #0a192f, #0f2742); color:#f1f5f9; ove
   object-fit:cover; box-shadow:0px 10px 40px rgba(100,255,218,0.3);
   animation: float 4s ease-in-out infinite;
 }
-@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
-.about-text { flex:1; max-height:100%; padding:40px;
+@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);} }
+.about-text { flex:1; padding:40px;
   background:rgba(255,255,255,0.03); border-radius:10px; border:1px solid rgba(100,255,218,0.3);
-  box-shadow:0 0 15px rgba(100,255,218,0.1); overflow-y:auto;
+  box-shadow:0 0 15px rgba(100,255,218,0.1);
 }
 .about-text h1 { font-size:2rem; margin-bottom:20px; }
 .about-text h1 span { color:#64ffda; }
 .about-text p { margin-bottom:15px; line-height:1.6; text-align:justify; font-size:1.05rem; }
 
-/* Next/Back Buttons */
+/* Navigation Buttons */
 .nav-buttons { margin-top:20px; display:flex; justify-content:center; gap:20px; }
 .nav-buttons a { background:#64ffda; color:#0a192f; text-decoration:none; padding:12px 30px; border-radius:30px; font-weight:600; transition:0.3s;}
 .nav-buttons a:hover { background:#52e0c4; transform:scale(1.05); }
 
-/* Page 2: Education + Achievements */
+/* Page 2: Education (Horizontal 3 columns) */
 .page2-content {
-  display:flex; flex-direction:column; justify-content:flex-start; height:100%; gap:30px;
+  display:flex; flex-direction:column; justify-content:center; height:100%; gap:40px;
 }
-
-/* Page 2 Title */
 .page2-title { text-align:center; font-size:2rem; color:#64ffda; margin-bottom:20px; position:relative; display:inline-block; }
-.page2-title::after {
-  content:""; position:absolute; width:100%; height:3px; background:#64ffda; bottom:-5px; left:0;
-  border-radius:10px;
-}
+.page2-title::after { content:""; position:absolute; width:100%; height:3px; background:#64ffda; bottom:-5px; left:0; border-radius:10px; }
 
-/* Top row: schools */
-.schools-row { display:flex; justify-content:space-between; gap:20px; }
+.schools-row {
+  display:flex; justify-content:space-between; gap:20px; height:70%;
+}
 .school-section {
-  display:flex; flex-direction:column; align-items:center; background:rgba(255,255,255,0.05);
-  border:1px solid rgba(100,255,218,0.3); border-radius:15px; padding:20px; width:32%; text-align:center;
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:rgba(255,255,255,0.05); border:1px solid rgba(100,255,218,0.3); border-radius:15px;
+  padding:20px; text-align:center;
 }
 .school-section img {
   width:200px; height:200px; object-fit:cover; border-radius:10px; border:3px solid #64ffda;
   box-shadow:0 4px 15px rgba(100,255,218,0.3); margin-bottom:15px;
 }
-.school-section h3 { color:#64ffda; margin-bottom:5px; font-size:1.2rem; }
-.school-section p { color:#e6f1ff; margin:3px 0; line-height:1.4; }
+.school-section h3 { color:#64ffda; font-size:1.5rem; margin-bottom:10px; }
 .school-year { font-style:italic; font-size:0.9rem; color:#ccd6f6; margin-bottom:10px; }
+.school-section p { color:#e6f1ff; line-height:1.4; }
 
-/* Bottom row: achievements */
-.achievements-row { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:20px;}
-.achievement-card {
-  flex:1; min-width:200px; background:rgba(255,255,255,0.05); border-radius:15px; padding:20px; text-align:center;
-  border:1px solid rgba(100,255,218,0.3); margin-bottom:10px;
+/* Page 3: Achievements (Like Page 2, bigger images, aligned text) */
+.page3-content {
+  display:flex; flex-direction:column; justify-content:center; height:100%; gap:30px;
 }
-.achievement-card i { font-size:2rem; color:#64ffda; margin-bottom:10px; }
-.achievement-card h4 { color:#64ffda; margin-bottom:5px; }
-.achievement-card p { color:#e6f1ff; }
+.page3-title { text-align:center; font-size:2rem; color:#64ffda; margin-bottom:20px; position:relative; display:inline-block; }
+.page3-title::after { content:""; position:absolute; width:100%; height:3px; background:#64ffda; bottom:-5px; left:0; border-radius:10px; }
+
+.achievements-row {
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  height:70%;
+  flex-wrap:wrap;
+}
+.achievement-card {
+  flex:1; min-width:220px; max-width:300px; display:flex; flex-direction:column;
+  align-items:center; justify-content:flex-start;
+  background:rgba(255,255,255,0.05); border:1px solid rgba(100,255,218,0.3);
+  border-radius:15px; padding:25px; text-align:center;
+}
+.achievement-card img {
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:15px;
+  border:3px solid #64ffda;
+  margin-bottom:15px;
+}
+.achievement-card h4 { color:#64ffda; margin-bottom:10px; font-size:1.4rem; }
+.achievement-card p { color:#e6f1ff; font-size:1rem; line-height:1.5; text-align:center; }
 
 /* Footer */
 footer { text-align:center; padding:20px; font-size:0.9rem; color:#ccd6f6; margin-top:10px; border-top:2px solid rgba(100,255,218,0.3);}
@@ -96,6 +117,7 @@ footer { text-align:center; padding:20px; font-size:0.9rem; color:#ccd6f6; margi
   <ul class="nav-links">
     <li><a id="link-page1" class="active">About Me</a></li>
     <li><a id="link-page2">Educational Background</a></li>
+    <li><a id="link-page3">Achievements</a></li>
   </ul>
 </nav>
 
@@ -123,68 +145,70 @@ footer { text-align:center; padding:20px; font-size:0.9rem; color:#ccd6f6; margi
 <section class="page" id="page2">
   <div class="page2-content">
     <div class="page2-title">Educational Background</div>
-
-    <!-- Schools Row -->
     <div class="schools-row">
       <div class="school-section">
         <img src="elementarylogo.jpg" alt="Elementary School">
         <h3>Elementary</h3>
         <div class="school-year">2012 - 2019</div>
         <p>Magsaysay Elementary School</p>
-        <p>Started my primary education where I learned the fundamentals and developed a curiosity for learning.</p>
+        <p>Started my primary education where I learned the fundamentals and developed a curiosity for learning. Built friendships and a foundation for lifelong learning.</p>
       </div>
       <div class="school-section">
         <img src="junior and senior high.png" alt="Junior & Senior High School">
         <h3>Junior & Senior High School</h3>
         <div class="school-year">2019 - 2025</div>
         <p>Pangasinan National High School</p>
-        <p>Built discipline, confidence, and foundational knowledge in ICT, preparing for college and life challenges.</p>
+        <p>Built discipline, confidence, and foundational knowledge in ICT, preparing for college and life challenges. Participated in extracurricular activities and competitions.</p>
       </div>
       <div class="school-section">
         <img src="collegelogo.jpg" alt="College">
         <h3>College</h3>
         <div class="school-year">2025 - Present</div>
         <p>University of the Cordilleras</p>
-        <p>Pursuing BS in Information Technology, major in Web Technology, focusing on coding, networking, and web development.</p>
+        <p>Pursuing BS in Information Technology, major in Web Technology, focusing on coding, networking, and web development. Engaged in projects, internships, and online learning.</p>
       </div>
     </div>
-
-    <!-- Achievements Row -->
-    <div class="achievements-row">
-      <div class="achievement-card">
-        <i class="fa-solid fa-medal"></i>
-        <h4>Diligent Medal</h4>
-        <p>Recognized for consistent hard work and perseverance.</p>
-      </div>
-      <div class="achievement-card">
-        <i class="fa-solid fa-briefcase"></i>
-        <h4>Best in Work Immersion</h4>
-        <p>For professionalism and outstanding performance during immersion.</p>
-      </div>
-      <div class="achievement-card">
-        <i class="fa-solid fa-trophy"></i>
-        <h4>Senate Medal</h4>
-        <p>For leadership and excellence in education.</p>
-      </div>
-      <div class="achievement-card">
-        <i class="fa-solid fa-award"></i>
-        <h4>With High Honors</h4>
-        <p>For academic excellence and perseverance.</p>
-      </div>
-      <div class="achievement-card">
-        <i class="fa-solid fa-computer"></i>
-        <h4>NC II – Computer System Servicing</h4>
-        <p>Certified in computer maintenance and troubleshooting.</p>
-      </div>
-      <div class="achievement-card">
-        <i class="fa-solid fa-music"></i>
-        <h4>First Placer – Singing Contest</h4>
-        <p>Awarded at Pangasinan National High School for vocal excellence.</p>
-      </div>
+    <div class="nav-buttons">
+      <a id="back2-btn">Back</a>
+      <a id="next2-btn">Next</a>
     </div>
   </div>
-  <div class="nav-buttons">
-    <a id="back-btn">Back</a>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+  <div class="page3-content">
+    <div class="page3-title">Achievements</div>
+    <div class="achievements-row">
+      <div class="achievement-card">
+        <img src="deligent.jpeg" alt="Diligent Medal">
+        <h4>Diligent Medal</h4>
+        <p>Awarded for consistently demonstrating hard work, persistence, and dedication in both academic and personal projects.</p>
+      </div>
+      <div class="achievement-card">
+        <img src="best in work immersion.jpeg" alt="Best Work Immersion">
+        <h4>Best in Work Immersion</h4>
+        <p>Recognized for outstanding performance and professionalism during internship and work immersion programs.</p>
+      </div>
+      <div class="achievement-card">
+        <img src="senate.jpeg" alt="Senate Medal">
+        <h4>Senate Medal</h4>
+        <p>Received for exemplary leadership, active participation, and contributions to school activities and programs.</p>
+      </div>
+      <div class="achievement-card">
+        <img src="with high.jpeg" alt="High Honors">
+        <h4>With High Honors</h4>
+        <p>Awarded for maintaining excellent academic performance throughout my school years.</p>
+      </div>
+      <div class="achievement-card">
+        <img src="NC II.jpg" alt="NC II CSS">
+        <h4>NC II – Computer System Servicing</h4>
+        <p>Certified in Computer System Servicing (NC II), demonstrating technical skills in hardware and software troubleshooting and maintenance.</p>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <a id="back3-btn">Back</a>
+    </div>
   </div>
 </section>
 
@@ -193,28 +217,29 @@ footer { text-align:center; padding:20px; font-size:0.9rem; color:#ccd6f6; margi
 <script>
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
+const page3 = document.getElementById('page3');
+
 const nextBtn = document.getElementById('next-btn');
-const backBtn = document.getElementById('back-btn');
+const back2Btn = document.getElementById('back2-btn');
+const next2Btn = document.getElementById('next2-btn');
+const back3Btn = document.getElementById('back3-btn');
+
 const linkPage1 = document.getElementById('link-page1');
 const linkPage2 = document.getElementById('link-page2');
+const linkPage3 = document.getElementById('link-page3');
 
-function showPage1(){
-  page2.classList.remove('show');
-  page1.classList.add('show');
-  linkPage1.classList.add('active');
-  linkPage2.classList.remove('active');
-}
-function showPage2(){
-  page1.classList.remove('show');
-  page2.classList.add('show');
-  linkPage2.classList.add('active');
-  linkPage1.classList.remove('active');
-}
+function showPage1(){ page1.classList.add('show'); page2.classList.remove('show'); page3.classList.remove('show'); linkPage1.classList.add('active'); linkPage2.classList.remove('active'); linkPage3.classList.remove('active'); }
+function showPage2(){ page2.classList.add('show'); page1.classList.remove('show'); page3.classList.remove('show'); linkPage2.classList.add('active'); linkPage1.classList.remove('active'); linkPage3.classList.remove('active'); }
+function showPage3(){ page3.classList.add('show'); page1.classList.remove('show'); page2.classList.remove('show'); linkPage3.classList.add('active'); linkPage1.classList.remove('active'); linkPage2.classList.remove('active'); }
 
 nextBtn.addEventListener('click', showPage2);
-backBtn.addEventListener('click', showPage1);
+back2Btn.addEventListener('click', showPage1);
+next2Btn.addEventListener('click', showPage3);
+back3Btn.addEventListener('click', showPage2);
+
 linkPage1.addEventListener('click', showPage1);
 linkPage2.addEventListener('click', showPage2);
+linkPage3.addEventListener('click', showPage3);
 </script>
 
 </body>
